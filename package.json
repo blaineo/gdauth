@@ -9,11 +9,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/RisingStack/nodehero-authentication.git"
+    "url": "git+https://github.com/blaineo/gdauth.git"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Blaine O'Brien",
+  "license": "",
   "dependencies": {
     "express": "4.13.4",
     "express-handlebars": "3.0.0",

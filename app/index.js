@@ -11,6 +11,7 @@ require('./auth').init(app)
 app.use(bodyParser.urlencoded({
   extended: false
 }));
+
 app.engine('.hbs', exphbs({
   defaultLayout: 'layout',
   extname: '.hbs',
