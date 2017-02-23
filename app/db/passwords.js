@@ -1,0 +1,14 @@
+const pwds = [
+  'password1',
+  'password2',
+  'password3',
+  'password4',
+  'password5',
+  'password6',
+  'password7',
+  'password8',
+  'password9',
+  'password10'
+];
+
+module.exports = pwds
