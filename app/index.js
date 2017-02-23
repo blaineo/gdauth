@@ -30,6 +30,12 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 /* Routes */
+app.all('/', (req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "X-Requested-With");
+  next();
+ });
+
 app.get('/', (req, res) => {
   res.render('home', { user: req.user });
 });
