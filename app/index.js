@@ -5,6 +5,7 @@ const passport = require('passport');
 const session = require('express-session');
 const exphbs = require('express-handlebars');
 const app = express();
+const sendmail = require('sendmail')();
 
 require('./auth').init(app)
 
@@ -56,6 +57,29 @@ app.post('/auth', (req, res, next) => {
       }
     });
   })(req, res, next);
+});
+
+app.get('/email', (req, res) => {
+    res.render('mail');
+});
+app.post('/email', (req, res, next) => {
+  res.setHeader('Content-Type', 'application/json');
+  if (req.body.email) {
+    let status = 'delivered';
+    sendmail({
+        from: 'request@godfreydadich.com',
+        to: 'blaineo@gmail.com',
+        subject: 'GodfreyDadich case studies access request',
+        html: `Please Grant access to email address: ${req.body.email}`,
+      }, function(err, reply) {
+        status = 'undeliverable';
+        console.log(err && err.stack);
+        console.dir(reply);
+    });
+    res.send(JSON.stringify({ email: status }));
+  } else {
+    res.send(JSON.stringify({ email: 'undeliverable' }));
+  }
 });
 
 app.use('/case',
